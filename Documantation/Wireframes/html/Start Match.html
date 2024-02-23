@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Match</title>
+<style>
+    body {
+        background-color: #fff;
+        color: #000;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .start-match-container {
+        text-align: center;
+    }
+    .start-match-container h1 {
+        margin-bottom: 20px;
+    }
+    .start-match-container select, 
+    .start-match-container input[type="datetime-local"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .start-match-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="start-match-container">
+    <h1>Start Match</h1>
+    <form action="#" method="post">
+        <select name="team1">
+            <option value="">Select Team 1</option>
+            <!-- Add options for teams dynamically if needed -->
+        </select>
+        <br>
+        <select name="team2">
+            <option value="">Select Team 2</option>
+            <!-- Add options for teams dynamically if needed -->
+        </select>
+        <br>
+        <input type="datetime-local" name="startTime" value="">
+        <br>
+        <input type="datetime-local" name="endTime" value="">
+        <br>
+        <select name="result">
+            <option value="In progress">In progress</option>
+            <!-- Add more options if needed -->
+        </select>
+        <br>
+        <select name="status">
+            <option value="Started">Started</option>
+            <option value="Pause">Pause</option>
+            <!-- Add more options if needed -->
+        </select>
+        <br>
+        <input type="submit" value="Start Match">
+    </form>
+</div>
+</body>
+</html>

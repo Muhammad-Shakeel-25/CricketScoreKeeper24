@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Team</title>
+<style>
+    body {
+        background-color: #fff;
+        color: #000;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .update-team-container {
+        text-align: center;
+    }
+    .update-team-container h1 {
+        margin-bottom: 20px;
+    }
+    .update-team-container select,
+    .update-team-container input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .update-team-container input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="update-team-container">
+    <h1>Update Team</h1>
+    <form action="#" method="post">
+        <select name="team" id="team">
+            <option value="team1">Team 1</option>
+            <option value="team2">Team 2</option>
+            <option value="team3">Team 3</option>
+            <!-- Add more options as needed -->
+        </select>
+        <br>
+        <input type="text" name="name" placeholder="Name">
+        <br>
+        <input type="text" name="country" placeholder="Country">
+        <br>
+        <input type="text" name="city" placeholder="City">
+        <br>
+        <input type="text" name="colour" placeholder="Colour">
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>
