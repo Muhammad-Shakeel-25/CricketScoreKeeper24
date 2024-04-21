@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 
 // if post request received then regester new user
@@ -21,7 +21,9 @@ if(isset($_GET['login']))
 
 
     if (loginUser($email, $password)) {
-        echo "Login successful!";
+        $_SESSION['email'] = $email;
+        echo "Login successful! <br>";
+        echo $_SESSION['email'];
     } else {
         echo "Invalid password.";
     }

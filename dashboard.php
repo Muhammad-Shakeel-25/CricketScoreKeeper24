@@ -1,3 +1,18 @@
+<?php
+
+// Start the session (if not already started)
+session_start();
+
+// Check if email is stored in the session
+if (isset($_SESSION['email'])) {
+  $email = $_SESSION['email'];
+} else {
+  // Set a default value or leave it empty if no email in session
+  $email = "";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +25,10 @@
     <div class="container">
         <h2>Cricket Management System</h2>
         <div class="options">
-            <button onclick="location.href='#';">Create Team</button>
-            <button onclick="location.href='#';">Add Player</button>
+        <div>Login as : <?php echo $email; ?></div>    
+        <hr>
+            <button onclick="location.href='Add%20Team.php';">Create Team</button>
+            <button onclick="location.href='Add Player.php';">Add Player</button>
             <button onclick="location.href='#';">Create Match</button>
             <button onclick="location.href='#';">Start Match</button>
             <button onclick="location.href='#';">Update Profile</button>
