@@ -20,7 +20,15 @@ $team = "CREATE TABLE IF NOT EXISTS team (
   email VARCHAR(255) NOT NULL
 )";
 
-if ($conn->query($team) === TRUE) {
+
+$player = "CREATE TABLE IF NOT EXISTS player (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  teamname VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  type VARCHAR(255) NOT NULL
+)";
+
+if ($conn->query($player) === TRUE) {
   echo "Table created successfully";
 } else {
   echo "Error creating table: " . $conn->error;
