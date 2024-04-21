@@ -27,6 +27,12 @@ function saveToPlayerTable($teamname, $name, $type) {
     // Execute the query and check for errors
     if ($conn->query($sql) === TRUE) {
         echo "Data saved successfully!";
+        header("Location: Add%20Player.php");
+
+    // Terminate the script to prevent further code execution
+    exit;
+    
+    
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

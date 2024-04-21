@@ -61,7 +61,7 @@ require_once('db.php');
 $sql = "SELECT team.name AS teamname, player.name, player.type
 FROM team
 INNER JOIN player ON team.name = player.teamname
-WHERE team.email = '".$email."'"; // Modify the SQL query as needed to select specific columns
+WHERE team.email = '".$email."' ORDER BY teamname ASC"; // Modify the SQL query as needed to select specific columns
 $result = $conn->query($sql);
 
 // Check if there are rows to display
