@@ -29,8 +29,8 @@ if (isset($_SESSION['email'])) {
         <hr>
             <button onclick="location.href='Add%20Team.php';">Create Team</button>
             <button onclick="location.href='Add Player.php';">Add Player</button>
-            <button onclick="location.href='#';">Create Match</button>
-            <button onclick="location.href='#';">Start Match</button>
+            <button onclick="location.href='Create Match.php';">Create Match</button>
+            <button onclick="location.href='Start Match.php';">Start Match</button>
             <button onclick="location.href='#';">Update Profile</button>
         </div>
     </div>

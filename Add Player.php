@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
     
     // Generate the header row
     echo '<tr>';
-    echo '<th>Player ID</th>';
+    echo '<th>Team Name</th>';
     echo '<th>Player Name</th>';
     echo '<th>Team Name</th>';
   
