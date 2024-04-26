@@ -44,7 +44,21 @@ $match = "CREATE TABLE IF NOT EXISTS cricket_match (
   email VARCHAR(255) NOT NULL
 )";
 
-if ($conn->query($match) === TRUE) {
+
+$inning = "CREATE TABLE IF NOT EXISTS inning (
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  ball_no VARCHAR(255) NOT NULL,
+  run VARCHAR(255) NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  bowler VARCHAR(255) NOT NULL,
+  batsman VARCHAR(255) NOT NULL,
+  match_id VARCHAR(255) NOT NULL
+)";
+
+
+
+
+if ($conn->query($inning) === TRUE) {
   echo "Table created successfully";
 } else {
   echo "Error creating table: " . $conn->error;
