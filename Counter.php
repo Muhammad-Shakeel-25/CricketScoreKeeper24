@@ -188,7 +188,7 @@ if (isset($_SESSION['email'])) {
 <button class="button green">Recent Balls = <div id="recent_balls"></div></button>
 <button id="total_runs" class="button blue"></button>
 <button class="button red">Out = 2</button>
-<button id="total_balls" class="button red"></button>
+<button id="balls_spent" class="button red"></button>
 <hr>
 <h2 class="h2">Boundary</h2>
 <hr>
@@ -207,9 +207,9 @@ if (isset($_SESSION['email'])) {
 <hr>
 <h2 class="h2">Extra</h2>
 <hr>
-<button onclick="addRun(this.innerText,'Extra')" class="button">No Ball</button>
-<button onclick="addRun(this.innerText,'Extra')" class="button">Wide Ball</button>
-<button onclick="addRun(this.innerText,'Run')" class="button">Leg Ball</button>
+<button onclick="addRun('1','No Ball Extra')" class="button">No Ball</button>
+<button onclick="addRun('1','Wide Ball Extra')" class="button">Wide Ball</button>
+<button onclick="addRun('1','Leg Ball Extra')" class="button">Leg Ball</button>
 <hr>
 <h2 class="h2">Wicket</h2>
 <hr>
@@ -225,23 +225,25 @@ if (isset($_SESSION['email'])) {
 
 
 <script>
-var total_balls=<?php   include_once  'Counter db.php';echo getCurrentBallNo($_GET['match']);?>;
-document.getElementById("total_balls").innerHTML="Total Balls = "+total_balls;
+var TotalOver=<?php   include_once  'Counter db.php';echo getTotalOver($_GET['match']);?>;
+
+const ballsPerOver = 6;
+const totalBalls = TotalOver * ballsPerOver;
+
+
+
+var balls_spent=<?php   include_once  'Counter db.php';echo getCurrentBallNo($_GET['match']);?>;
+document.getElementById("balls_spent").innerHTML="Balls Spent = "+balls_spent+"/"+totalBalls;
 var total_runs=<?php   include_once  'Counter db.php';echo getSumOfRuns($_GET['match']);?>;
 document.getElementById("total_runs").innerHTML="Total Runs = "+total_runs;
 var recent_balls="<?php   include_once  'Counter db.php';echo getLastSixRuns($_GET['match']);?>";
 document.getElementById("recent_balls").innerHTML=recent_balls;
 
 
-
-function updatetotalBalls(total_balls)
+if(totalBalls==balls_spent)
 {
-    
-    document.getElementById("total_balls").innerHTML="Total Balls = "+total_balls;
-
+alert("Batting team now changed");
 }
-
-
 
 
 
@@ -251,7 +253,9 @@ function updatetotalBalls(total_balls)
         toast.innerHTML = message;
         toast.classList.add("show");
         setTimeout(function(){
+            // run after 3 seconds
             toast.classList.remove("show");
+            window.location.reload();
         }, 3000);
     }
 
@@ -271,28 +275,32 @@ if(type=="Run")
 {
 console.log(batsman+" Hit "+run+" "+type+" to "+bowler);
 showToast(batsman+" Hit "+run+" "+type+" to "+bowler);
-total_balls++;
-updatetotalBalls(total_balls);
+saveRunToDB(run,type,bowler,batsman);
 }
 else if(type=="Boundary")
 {
 console.log(batsman+" Hit "+run+" "+type+" to "+bowler);
 showToast(batsman+" Hit "+run+" "+type+" to "+bowler);
-total_balls++;
-updatetotalBalls(total_balls);
+saveRunToDB(run,type,bowler,batsman);
 }
 else if(type=="Out")
 {
 console.log(batsman+" "+run+" "+type+" by "+bowler);
 showToast(batsman+" "+run+" "+type+" by "+bowler);
-total_balls++;
-updatetotalBalls(total_balls);
+saveRunToDB(run,type,bowler,batsman);
 }
-else if(type=="Extra")
+else if(type=="Leg Ball Extra")
 {
 console.log(type+" "+run+" by "+bowler);
 showToast(type+" "+run+" by "+bowler);
+saveRunToDB(run,type,bowler,batsman);
 }
+else  if(type=="No Ball Extra"||type=="Wide Ball Extra")
+     {
+        console.log(type+" "+run+" by "+bowler);
+showToast(type+" "+run+" by "+bowler);
+saveRunToDB(run,type,bowler,batsman);
+     }
 
 
 
@@ -302,13 +310,41 @@ showToast(type+" "+run+" by "+bowler);
 
 
 
-    function saveRunToDB(run,type)
+    function saveRunToDB(run,type,bowler,batsman)
     {
 
 
+        const matchValue = new URLSearchParams(window.location.search).get('match');
+     if(type=="No Ball Extra"||type=="Wide Ball Extra")
+     {
+        balls_spent=balls_spent;
+     }
+     else
+     {
+        balls_spent=balls_spent+1;
+    }
+     
+        url="Counter db.php?match_id="+matchValue+"&ball_no="+balls_spent+"&run="+run+"&type="+type+"&bowler="+bowler+"&batsman="+batsman;
+     
+     // Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
 
-     url="Counter db.php?match_id=&ball_no=&run=&type=&bowler=&batsman=";
-     console.log();
+// Set up the request
+xhr.open('GET', url, true);
+
+// Set up a function to handle the success response
+xhr.onreadystatechange = function() {
+    // Check if the request is complete (readyState 4)
+    // and the response status is 200 (success)
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        // Log the success response to the console
+        console.log('Success:', xhr.responseText);
+    }
+};
+
+// Send the request
+xhr.send();
+   console.log(url); 
 
     }
 

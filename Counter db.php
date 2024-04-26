@@ -20,7 +20,11 @@ if(isset($_GET['getSumOfRuns']))
     echo getSumOfRuns($_GET['match']);
 }
             
-
+// url like ?getTotalOver&match=4
+if(isset($_GET['getTotalOver']))
+{ 
+    echo getTotalOver($_GET['match']);
+}
 
 
 
@@ -265,3 +269,51 @@ function getLastSixRuns($match_id) {
 //$match_id = 4; // Specify the match ID you are interested in
 //$last_six_runs = getLastSixRuns($match_id);
 //echo "The last six runs for match ID $match_id are: $last_six_runs";
+
+
+
+
+// Function to get the last six runs from the inning table and return them as a comma-separated string
+function getTotalOver($match_id) {
+    // Database connection parameters
+   include "db.php";
+
+    // SQL query to get the last six runs from the inning table
+    $sql = "SELECT total_over FROM cricket_match WHERE id =?";
+// Database connection parameters
+include 'db.php';
+
+
+// Prepare the statement
+$stmt = $conn->prepare($sql);
+
+// Bind the match_id parameter
+$stmt->bind_param("i", $match_id);
+
+// Execute the statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+
+// Initialize the total runs as null
+$total_over = null;
+
+// Fetch the row and get the total runs
+if ($row = $result->fetch_assoc()) {
+    $total_over = $row['total_over'];
+}
+
+// Close the statement and the connection
+$stmt->close();
+$conn->close();
+
+// Return the total runs
+return $total_over;
+
+}
+
+// Example usage:
+//$match_id = 4;
+//$total_over = getTotalOver($match_id);
+//echo "Total overs in match $match_id: " . $total_over;
