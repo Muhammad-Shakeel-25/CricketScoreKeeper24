@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Player</title>
+    <style>
+        /* Add your black and white styling here */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input, select, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 300px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Player</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="team">Team:</label>
+        <select id="team" name="team" required>
+            <option value="team1">Team1</option>
+            <option value="team2">Team2</option>
+            <option value="team3">Team3</option>
+            <!-- Add more team options here -->
+        </select>
+
+        <button type="submit">Add Player</button>
+    </form>
+</body>
+</html>

@@ -212,7 +212,14 @@ function getSumOfRuns($match_id) {
     $conn->close();
 
     // Return the total runs
+    if($total_runs==null)
+    {
+        return 0;
+    }
+    else
+    {
     return $total_runs;
+}
 }
 
 

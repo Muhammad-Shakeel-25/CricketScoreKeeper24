@@ -12,10 +12,10 @@
         <hr>
         <h2>Login/Register</h2>
         <div class="error-message" id="errorEmail"></div>
-        <input type="text" name="email" id="email" placeholder="Email" oninput="checkEmail(this.value)">
+        <input type="text" name="email" id="email" placeholder="Email" oninput="checkEmail(this.value)" required>
         <div id="emailStatus"></div>
         <div class="error-message" id="errorPassword"></div>
-        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="password" name="password" id="password" placeholder="Password" required>
         <input id="submitButton" type="submit" value="Login/Regester">
     </form>
 

@@ -187,7 +187,7 @@ if (isset($_SESSION['email'])) {
 <hr>
 <button class="button green">Recent Balls = <div id="recent_balls"></div></button>
 <button id="total_runs" class="button blue"></button>
-<button class="button red">Out = 2</button>
+<button class="button red">Out = 0</button>
 <button id="balls_spent" class="button red"></button>
 <hr>
 <h2 class="h2">Boundary</h2>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Match End</title>
+    <style>
+        /* Style the body with black and white colors */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* Style the H1 tag */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style the button */
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>End Match</h1>
+    <!-- Sample table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Score</th>
+                <th>End Match</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Team A</td>
+                <td>10</td>
+                <td><input type="checkbox" id="endMatchA" name="endMatchA"></td>
+            </tr>
+            <tr>
+                <td>Team B</td>
+                <td>8</td>
+                <td><input type="checkbox" id="endMatchB" name="endMatchB"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Button to navigate to the next page -->
+    <button onclick="nextPage()">Next Page</button>
+
+    <!-- JavaScript function to handle the button click -->
+    <script>
+        function nextPage() {
+            // Add your JavaScript code here to handle the next page navigation
+            // For example, redirecting to a new page
+            window.location.href = 'new_page.html';
+        }
+    </script>
+</body>
+
+</html>

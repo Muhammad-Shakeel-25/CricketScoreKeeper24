@@ -24,8 +24,10 @@ if(isset($_GET['login']))
         $_SESSION['email'] = $email;
         echo "Login successful! <br>";
         echo $_SESSION['email'];
+        echo '<br><a href="dashboard.php">Go to dashboard</a>';
     } else {
         echo "Invalid password.";
+        echo '<br><a href="index.php">Go to Login page</a>';
     }
 
 
